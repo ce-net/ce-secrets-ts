@@ -14,6 +14,11 @@
 //   - signChallenge / verifyAuth / verifyAuthFull   — device proves it is enrolled.
 //   - makeNonce / checkNonce                         — stateless HMAC nonce.
 //   - stable_stringify / authBody / nowISO           — canonicalization helpers.
+//
+// The login layer (adopt ce-auth device-auth in a few lines):
+//   - loginHeaders   — GET /challenge, sign, return the x-ce-* request headers.
+//   - verifyViaAuth  — POST /verify, return the { ok, role } verdict (server side).
+//   - ensureDevice   — load-or-generate a DeviceKey from a storage shim (one-liner).
 
 export {
   // device keys
@@ -73,3 +78,20 @@ export type {
   VerifyAuthFullOptions,
   VerifyAuthFullResult,
 } from "./auth.js";
+
+export {
+  // tiny reusable LOGIN client (adopt ce-auth device-auth in a few lines)
+  loginHeaders,
+  verifyViaAuth,
+  ensureDevice,
+  DEVICE_STORAGE_KEY,
+} from "./login.js";
+
+export type {
+  FetchLike,
+  LoginOptions,
+  Challenge,
+  LoginHeaders,
+  VerifyVerdict,
+  DeviceStorage,
+} from "./login.js";
