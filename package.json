@@ -1,0 +1,61 @@
+{
+  "name": "@ce-net/secrets",
+  "version": "0.1.0",
+  "description": "Runtime-agnostic TypeScript SDK for ce-net encrypted multi-device secrets + challenge-response auth. WebCrypto-only, byte-exact interop with the canonical JS and Rust SDKs.",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "author": "Leif Rydenfalk <ledamecrydenfalk@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ce-net/ce-secrets-ts.git"
+  },
+  "homepage": "https://ce-net.com",
+  "keywords": [
+    "ce",
+    "ce-net",
+    "secrets",
+    "vault",
+    "auth",
+    "ecies",
+    "webcrypto",
+    "sdk"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "tsdown && publint && attw --pack"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.0",
+    "@types/node": "^22.0.0",
+    "publint": "^0.3.0",
+    "tsdown": "^0.12.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}
